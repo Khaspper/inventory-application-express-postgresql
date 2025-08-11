@@ -6,12 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ts": "tsc --build",
-    "build:css:src": "postcss ./src/public/styles/styles.css -o ./src/public/styles/build.css",
+    "build:css:src": "postcss ./src/public/styles/styles.css -o ./src/public/styles/build.css --watch",
     "copy:assets": "cp -R src/views dist/views && cp -R src/public dist/public",
     "build": "npm run build:css:src && npm run build:ts && npm run copy:assets",
     "start:build": "node ./dist/app.js",
     "start:dev": "nodemon ./src/app.ts",
-    "dev": "concurrently \"npm:build:css\" \"npm:start:dev\""
+    "dev": "concurrently \"npm:build:css:src\" \"npm:start:dev\""
   },
   "repository": {
     "type": "git",

@@ -1,8 +1,18 @@
-<div>
-  <h1>Afterlight Outpost</h1>
-  <ul>
-    <% categories.forEach( (category) => { %>
-    <li><%= category.category %></li>
+<div class="border-2 flex gap-7 justify-center text-lg p-5">
+  <h1
+    class="cursor-pointer transition-all duration-200 ease-in-out transform hover:scale-105"
+  >
+    <a href="/">Afterlight Outpost</a>
+  </h1>
+  <ul class="flex gap-7">
+    <% categories.forEach((category) => { %>
+    <li
+      class="cursor-pointer transition-all duration-200 ease-in-out transform hover:scale-105"
+    >
+      <a href="/category/<%= category.category.toLowerCase() %>"
+        ><%= category.category %></a
+      >
+    </li>
     <% }); %>
   </ul>
 </div>

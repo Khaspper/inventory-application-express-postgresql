@@ -8,8 +8,8 @@
   </head>
   <body>
     <%- include('navbar') %>
-    <h1 class="text-3xl font-bold text-gray-800 mb-4"><%= title %></h1>
-    <ul>
+    <h1 class="text-3xl font-bold text-gray-800 mb-4 border-2"><%= title %></h1>
+    <ul class="flex">
       <% items.forEach( (item) => { %> <%- include('items', { item_name:
       item.item_name }) %> <% }); %>
     </ul>
