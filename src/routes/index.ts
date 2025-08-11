@@ -1,10 +1,8 @@
 import { Router } from "express";
-import { Request, Response } from "express";
+import { getItems } from "../controllers/indexController";
 
 const indexRouter = Router();
 
-indexRouter.get("/", (req: Request, res: Response) => {
-  res.render("index", { title: "index", message: "hello" });
-});
+indexRouter.get("/", getItems);
 
 export default indexRouter;

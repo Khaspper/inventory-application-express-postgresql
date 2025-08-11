@@ -8,5 +8,9 @@
   </head>
   <body>
     <h1 class="text-3xl font-bold text-gray-800 mb-4"><%= title %></h1>
+    <ul>
+      <% items.forEach( (item) => { %> <%- include('items', { item_name:
+      item.item_name }) %> <% }); %>
+    </ul>
   </body>
 </html>
