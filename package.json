@@ -1,0 +1,48 @@
+{
+  "name": "inventory-application-express-postgresql",
+  "version": "1.0.0",
+  "description": "Mainly for practice :P",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:ts": "tsc --build",
+    "build:css:src": "postcss ./src/public/styles/styles.css -o ./src/public/styles/build.css",
+    "copy:assets": "cp -R src/views dist/views && cp -R src/public dist/public",
+    "build": "npm run build:css:src && npm run build:ts && npm run copy:assets",
+    "start:build": "node ./dist/app.js",
+    "start:dev": "nodemon ./src/app.ts",
+    "dev": "concurrently \"npm:build:css\" \"npm:start:dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Khaspper/inventory-application-express-postgresql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Khaspper/inventory-application-express-postgresql/issues"
+  },
+  "homepage": "https://github.com/Khaspper/inventory-application-express-postgresql#readme",
+  "dependencies": {
+    "dotenv": "^17.2.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.11",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.2.1",
+    "@types/pg": "^8.15.5",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^9.2.0",
+    "nodemon": "^3.1.10",
+    "postcss": "^8.5.6",
+    "postcss-cli": "^11.0.1",
+    "tailwindcss": "^4.1.11",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.2"
+  }
+}
