@@ -8,5 +8,5 @@ export async function addNewItemToDB(req: Request, res: Response) {
 }
 
 export async function addItemForm(req: Request, res: Response) {
-  res.json({ title: "Form for the user to add a new item" });
+  res.render("addItemForm", { title: "Add New Item" });
 }
