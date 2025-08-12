@@ -1,12 +1,8 @@
 import { Router } from "express";
-import { postDeleteItem } from "../db/queries";
+import { deleteItem } from "../controllers/itemActionsController";
 
 const itemActionRouter = Router();
 
-itemActionRouter.get("/:id", (req, res) => {
-  console.log(req.params.id);
-  res.send(req.params.id);
-});
-itemActionRouter.post("/:id", postDeleteItem);
+itemActionRouter.post("/:id", deleteItem);
 
 export default itemActionRouter;

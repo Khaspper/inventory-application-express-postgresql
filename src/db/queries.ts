@@ -1,5 +1,4 @@
 import pool from "./pool";
-import { Request, Response } from "express";
 
 type TItem = {
   item_name: string;
@@ -45,8 +44,6 @@ export async function postNewItem(item: TItem) {
   }
 }
 
-export async function postDeleteItem(req: Request, res: Response) {
-  const id = req.params.id;
-  await pool.query("DELETE FROM items where id = ($1)", [id]);
-  res.redirect("/");
+export async function postDeleteItem(id: Number) {
+  await pool.query("DELETE FROM items WHERE id = ($1)", [id]);
 }
