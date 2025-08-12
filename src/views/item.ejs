@@ -10,7 +10,7 @@
   <li>
     <div class="flex">
       <!--! Change these buttons to type SUBMIT !-->
-      <form action="/edit" method="GET">
+      <form action="/edit/<%= item.id %>" method="GET">
         <button
           type="submit"
           class="border-2 px-3 py-2 shrink grow text-sm flex justify-center items-center text-white bg-amber-400 rounded-lg"
@@ -18,7 +18,7 @@
           Edit
         </button>
       </form>
-      <form action="/edit" method="POST">
+      <form action="/edit/<%= item.id %>" method="POST">
         <button
           type="submit"
           class="border-2 px-3 py-2 shrink grow text-sm flex justify-center items-center bg-red-700 text-white rounded-lg"
