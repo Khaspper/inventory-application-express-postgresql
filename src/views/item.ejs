@@ -4,7 +4,9 @@
   <li><%=item.price%></li>
   <li><%=item.durability%></li>
   <li><%=item.quantity%></li>
-  <li>1</li>
+  <li>
+    <%= categories.find(c=> c.category_id === item.category_id).category %>
+  </li>
   <li>
     <div class="flex">
       <!--! Change these buttons to type SUBMIT !-->

@@ -3,7 +3,88 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>New Item Form</title>
+    <link rel="stylesheet" href="/styles/build.css" />
   </head>
-  <body></body>
+  <body class="flex justify-center">
+    <div class="rounded-2xl shadow-xl/30 mt-5 p-5 max-w-[500px]">
+      <section class="p-2 text-center">
+        <h1 class="text-4xl font-medium"><%= title %></h1>
+        <h2 class="text-2xl">Fill in the item information below</h2>
+      </section>
+      <form class="flex flex-wrap gap-4" action="/new" method="POST">
+        <div class="flex flex-col basis-0 grow">
+          <label for="item_name"> Item name *</label>
+          <input
+            required
+            type="text"
+            name="item_name"
+            id="item_name"
+            class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+          />
+        </div>
+        <div class="flex flex-col basis-0 grow">
+          <label for="price">Price *</label>
+          <input
+            required
+            type="text"
+            name="price"
+            id="price"
+            class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+          />
+        </div>
+        <div class="flex flex-col basis-0 grow">
+          <label for="durability">Durability (1 - 5)*</label>
+          <input
+            required
+            type="text"
+            name="durability"
+            id="durability"
+            class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+          />
+        </div>
+        <div class="flex flex-col basis-0 grow">
+          <label for="durability">Quantity *</label>
+          <input
+            required
+            type="text"
+            name="quantity"
+            id="quantity"
+            class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+          />
+        </div>
+        <div class="flex flex-col grow min-w-[250px] basis-0">
+          <label for="category"> Category *</label>
+          <select
+            required
+            name="category"
+            id="category"
+            class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+          >
+            <option value="weapon">Weapon</option>
+            <option value="clothing">Clothing</option>
+            <option value="food">Food</option>
+            <option value="accessories">Accessories</option>
+            <option value="ammunition">Ammunition</option>
+            <option value="" disabled selected hidden>
+              -- Select Category --
+            </option>
+          </select>
+        </div>
+        <div class="flex w-full justify-between gap-4 text-white">
+          <a
+            href="/"
+            class="flex justify-center items-center border-2 p-3 rounded-xl bg-yellow-400 hover:cursor-pointer"
+            >Go back</a
+          >
+          <button
+            type="submit"
+            class="border-2 p-3 rounded-xl bg-green-600 hover:cursor-pointer"
+          >
+            Add item
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>

@@ -5,7 +5,7 @@ type TItem = {
   price: Number;
   durability: Number;
   quantity: Number;
-  category_id: Number;
+  category_id: string;
 };
 
 export async function getAllItems() {
@@ -24,7 +24,16 @@ export async function postNewItem(item: TItem) {
     const price = item.price;
     const durability = item.durability;
     const quantity = item.quantity;
-    const category_id = item.category_id;
+    const category_id =
+      item.category_id == "Weapon"
+        ? 1
+        : item.category_id == "Clothing"
+        ? 2
+        : item.category_id == "Food"
+        ? 3
+        : item.category_id == "Ammunition"
+        ? 5
+        : 4;
     await pool.query(
       "INSERT INTO items (item_name, price, durability, quantity, category_id) VALUES ($1, $2, $3, $4, $5)",
       [item_name, price, durability, quantity, category_id]

@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 })();
 
 app.use("/", indexRouter);
-app.use("/add", addItemRouter);
+app.use("/new", addItemRouter);
 
 app.listen(PORT, () => {
   console.log(`Server up and running listening at http://localhost:${PORT}`);

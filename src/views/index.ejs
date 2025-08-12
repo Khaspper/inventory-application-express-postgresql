@@ -8,20 +8,18 @@
   </head>
   <body class="p-5 flex justify-center">
     <div class="shadow-xl/30 min-w- max-w-8xl">
-      <form
-        action=""
-        method="POST"
+      <div
         class="bg-emerald-800 p-5 text-white text-xl sm:text-2xl flex items-center sm:justify-between rounded-t-lg flex-wrap justify-center gap-5"
       >
         <p class="font-bold">Afterlight outpost inventory</p>
         <!--! Change type to submit when you hok this up !-->
-        <button
-          type="button"
+        <a
+          href="/new"
           class="text-lg px-5 py-2 underline bg-emerald-900 rounded-xl"
         >
           &plus; Add Item
-        </button>
-      </form>
+        </a>
+      </div>
       <%- include('filterForm') %>
       <div class="grid grid-cols-7 bg-gray-200 font-medium p-3">
         <p>Id</p>
