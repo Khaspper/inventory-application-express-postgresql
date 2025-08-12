@@ -47,3 +47,10 @@ export async function postNewItem(item: TItem) {
 export async function postDeleteItem(id: Number) {
   await pool.query("DELETE FROM items WHERE id = ($1)", [id]);
 }
+
+export async function getItem(id: Number) {
+  const { rows } = await pool.query("SELECT * FROM items WHERE id = ($1)", [
+    id,
+  ]);
+  return rows;
+}
