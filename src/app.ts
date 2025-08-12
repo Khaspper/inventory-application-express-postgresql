@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import indexRouter from "./routes";
+import addItemRouter from "./routes/addItem";
 import path from "node:path";
 import { getAllCategories } from "./db/queries";
 
@@ -20,6 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 })();
 
 app.use("/", indexRouter);
+app.use("/add", addItemRouter);
 
 app.listen(PORT, () => {
   console.log(`Server up and running listening at http://localhost:${PORT}`);
