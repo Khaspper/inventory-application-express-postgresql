@@ -6,20 +6,23 @@
     <title><%= title %></title>
     <link rel="stylesheet" href="/styles/build.css" />
   </head>
-  <body class="p-3">
-    <form
-      action=""
-      method="POST"
-      class="bg-emerald-800 p-5 text-white text-2xl flex items-center justify-between rounded-t-lg"
-    >
-      <p class="font-bold">Afterlight outpost inventory</p>
-      <!--! Change type to submit when you hok this up !-->
-      <button
-        type="button"
-        class="text-lg px-5 py-2 underline bg-emerald-900 rounded-xl"
+  <body class="p-5 flex justify-center">
+    <div class="shadow-xl/30 max-w-8xl">
+      <form
+        action=""
+        method="POST"
+        class="bg-emerald-800 p-5 text-white sm:text-2xl flex items-center sm:justify-between rounded-t-lg flex-wrap justify-center gap-5"
       >
-        &plus; Add Item
-      </button>
-    </form>
+        <p class="font-bold">Afterlight outpost inventory</p>
+        <!--! Change type to submit when you hok this up !-->
+        <button
+          type="button"
+          class="text-lg px-5 py-2 underline bg-emerald-900 rounded-xl"
+        >
+          &plus; Add Item
+        </button>
+      </form>
+      <%- include('filterForm') %>
+    </div>
   </body>
 </html>

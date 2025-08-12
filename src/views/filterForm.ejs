@@ -1,0 +1,67 @@
+<form action="" method="GET" id="filterForm" class="p-5 bg-gray-100">
+  <h1 class="text-xl font-bold">Filter Items</h1>
+  <div class="flex flex-wrap gap-4 items-center">
+    <div class="flex flex-col grow basis-0 min-w-[250px]">
+      <label for="item_name"> Search item </label>
+      <input
+        class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+        type="text"
+        name="item_name"
+        id="item_name"
+        placeholder="Search for item..."
+      />
+    </div>
+    <div class="flex flex-col grow min-w-[250px] basis-0">
+      <label for="category"> Category </label>
+      <select
+        name="category"
+        id="category"
+        class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+      >
+        <option value="all">All</option>
+        <option value="weapon">Weapon</option>
+        <option value="clothing">Clothing</option>
+        <option value="food">Food</option>
+        <option value="accessories">Accessories</option>
+        <option value="ammunition">Ammunition</option>
+      </select>
+    </div>
+    <div class="flex flex-col grow min-w-[250px] basis-0">
+      <label for="sort_by"> Sort by </label>
+      <select
+        name="sort_by"
+        id="sort_by"
+        class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+      >
+        <option value="none">None</option>
+        <option value="price">Price</option>
+        <option value="durability">Durability</option>
+        <option value="quantity">Quantity</option>
+      </select>
+    </div>
+    <div class="flex flex-col grow min-w-[250px] basis-0">
+      <label for="order"> Order </label>
+      <select
+        name="order"
+        id="order"
+        class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+      >
+        <option value="ascending">Ascending</option>
+        <option value="descending">Descending</option>
+      </select>
+    </div>
+    <div class="text-white flex grow mt-5">
+      <!--! Change the type to submit later !-->
+      <button type="button" class="border-2 bg-emerald-800 grow rounded-lg p-2">
+        Apply Filter
+      </button>
+      <button
+        class="border-2 bg-zinc-500 grow rounded-lg p-2"
+        type="button"
+        onclick="document.getElementById('filterForm').reset()"
+      >
+        Clear Filters
+      </button>
+    </div>
+  </div>
+</form>
