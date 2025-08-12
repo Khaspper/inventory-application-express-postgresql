@@ -10,7 +10,6 @@ const category = "Ammunition";
 // const price = 59.99;
 // const durability = 5;
 // const quantity = 5;
-// const description = "Shoots a powerful blast";
 // const category_id = 1;
 
 async function main() {
@@ -33,7 +32,6 @@ async function main() {
   	price REAL NOT NULL,
   	durability INTEGER NOT NULL,
   	quantity INTEGER NOT NULL,
-  	description VARCHAR ( 500 ),
   	category_id INTEGER NOT NULL,
   	FOREIGN KEY(category_id) REFERENCES categories(category_id)
 );`
@@ -44,9 +42,9 @@ async function main() {
     [category]
   );
   // await client.query(
-  //   `INSERT INTO items (item_name, price, durability, quantity, description, category_id)
+  //   `INSERT INTO items (item_name, price, durability, quantity, category_id)
   //   VALUES ($1, $2, $3, $4, $5, $6);`,
-  //   [item_name, price, durability, quantity, description, category_id]
+  //   [item_name, price, durability, quantity, category_id]
   // );
   await client.end();
   console.log("done");
