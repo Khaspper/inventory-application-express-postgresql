@@ -43,3 +43,7 @@ export async function postNewItem(item: TItem) {
     console.error(error);
   }
 }
+
+export async function postDeleteItem(id: Number) {
+  await pool.query("DELETE FROM item where id = ($1)", [id]);
+}

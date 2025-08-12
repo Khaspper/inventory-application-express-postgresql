@@ -10,16 +10,22 @@
   <li>
     <div class="flex">
       <!--! Change these buttons to type SUBMIT !-->
-      <a
-        href="/edit/<%= item.id %>"
-        class="border-2 px-3 py-2 shrink grow text-sm flex justify-center items-center text-white bg-amber-400 rounded-lg"
-        >Edit</a
-      >
-      <a
-        href="/delete/<%= item.id %>"
-        class="border-2 px-3 py-2 shrink grow text-sm flex justify-center items-center bg-red-700 text-white rounded-lg"
-        >Delete</a
-      >
+      <form action="/edit" method="GET">
+        <button
+          type="submit"
+          class="border-2 px-3 py-2 shrink grow text-sm flex justify-center items-center text-white bg-amber-400 rounded-lg"
+        >
+          Edit
+        </button>
+      </form>
+      <form action="/edit" method="POST">
+        <button
+          type="submit"
+          class="border-2 px-3 py-2 shrink grow text-sm flex justify-center items-center bg-red-700 text-white rounded-lg"
+        >
+          Delete
+        </button>
+      </form>
     </div>
   </li>
 </ul>
