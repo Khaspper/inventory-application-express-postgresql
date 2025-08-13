@@ -6,11 +6,11 @@ dotenv.config();
 const category = "Ammunition";
 
 //? Items
-// const item_name = "Shotgun";
-// const price = 59.99;
-// const durability = 5;
-// const quantity = 5;
-// const category_id = 1;
+const item_name = "Shotgun";
+const price = 59.99;
+const durability = 5;
+const quantity = 5;
+const category_id = 1;
 
 async function main() {
   console.log("Seeding...");
@@ -41,11 +41,11 @@ async function main() {
     VALUES ($1);`,
     [category]
   );
-  // await client.query(
-  //   `INSERT INTO items (item_name, price, durability, quantity, category_id)
-  //   VALUES ($1, $2, $3, $4, $5, $6);`,
-  //   [item_name, price, durability, quantity, category_id]
-  // );
+  await client.query(
+    `INSERT INTO items (item_name, price, durability, quantity, category_id)
+    VALUES ($1, $2, $3, $4, $5, $6);`,
+    [item_name, price, durability, quantity, category_id]
+  );
   await client.end();
   console.log("done");
 }
