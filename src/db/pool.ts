@@ -4,9 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const pool = new Pool({
-  connectionString:
-    process.env.DATABASE_PUBLIC_URL || process.env.LOCAL_DATABASE_URL,
-  ssl: { rejectUnauthorized: false },
+  connectionString: process.env.LOCAL_DATABASE_URL,
 });
 
 export default pool;
