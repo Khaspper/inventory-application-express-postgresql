@@ -18,7 +18,5 @@ export async function getItems(req: Request, res: Response) {
 
 export async function filterItems(req: Request, res: Response) {
   const items = await getFilteredItems(req.query);
-  console.log("inside");
-  res.send(items);
-  // res.render("index", { title: "Items list", items: items });
+  res.render("index", { title: "Items list", items: items });
 }

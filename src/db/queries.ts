@@ -12,7 +12,7 @@ type TItem = {
 type TFilter = {
   item_name?: string;
   category?: string;
-  sortBy?: string;
+  sort_by?: string;
   order?: string;
 };
 
@@ -85,7 +85,7 @@ export async function getFilteredItems(filter: TFilter) {
     typeof filter.item_name === "string" ? filter.item_name : "none";
   const category =
     typeof filter.category === "string" ? filter.category : "all";
-  const sortBy = typeof filter.sortBy === "string" ? filter.sortBy : "none";
+  const sortBy = typeof filter.sort_by === "string" ? filter.sort_by : "none";
   const order = typeof filter.order === "string" ? filter.order : "none";
 
   let SQL = `SELECT * FROM items WHERE 1 = 1`;
@@ -106,12 +106,10 @@ export async function getFilteredItems(filter: TFilter) {
   }
 
   if (sortBy !== "none") {
-    SQL += ` ORDER BY ($${count})`;
-    params.push(sortBy);
-    count += 1;
+    SQL += ` ORDER BY ${sortBy}`;
     if (order === "ascending") {
       SQL += ` ASC`;
-    } else if (order === "descending") {
+    } else {
       SQL += " DESC";
     }
   } else if (order !== "none") {
