@@ -11,6 +11,7 @@
       <section class="p-2 text-center">
         <h1 class="text-4xl font-medium"><%= title %></h1>
         <h2 class="text-2xl">Fill in the item information below</h2>
+        <%- include("partials/errors.ejs") %>
       </section>
       <form class="flex flex-wrap gap-4" action="/new" method="POST">
         <div class="flex flex-col basis-0 grow">
