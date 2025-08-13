@@ -9,7 +9,8 @@
     "build:css:src": "postcss ./src/public/styles/styles.css -o ./src/public/styles/build.css --watch",
     "build:css": "postcss ./src/public/styles/styles.css -o ./src/public/styles/build.css",
     "copy:assets": "cp -R src/views dist/views && cp -R src/public dist/public",
-    "build": "npm run build:css && npm run build:ts && npm run copy:assets",
+    "build": "npm run build:css && npm run build:ts && npm run copy:assets && npm run seed",
+    "seed": "node ./dist/populatedb.js",
     "start:build": "node ./dist/app.js",
     "start:dev": "nodemon ./src/app.ts",
     "dev": "concurrently \"npm:build:css:src\" \"npm:start:dev\""
