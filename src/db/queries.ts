@@ -6,17 +6,24 @@ type TItem = {
   price: Number;
   durability: Number;
   quantity: Number;
-  category_id: string;
+  category: string;
 };
 
-function getCategory(category_id: string) {
-  return category_id == "Weapon"
+type TFilter = {
+  item_name?: string;
+  category?: string;
+  sortBy?: string;
+  order?: string;
+};
+
+function getCategory(category: string) {
+  return category == "weapon"
     ? 1
-    : category_id == "Clothing"
+    : category == "clothing"
     ? 2
-    : category_id == "Food"
+    : category == "food"
     ? 3
-    : category_id == "Ammunition"
+    : category == "ammunition"
     ? 5
     : 4;
 }
@@ -37,7 +44,7 @@ export async function postNewItem(item: TItem) {
     const price = item.price;
     const durability = item.durability;
     const quantity = item.quantity;
-    const category_id = getCategory(item.category_id);
+    const category_id = getCategory(item.category);
     await pool.query(
       "INSERT INTO items (item_name, price, durability, quantity, category_id) VALUES ($1, $2, $3, $4, $5)",
       [item_name, price, durability, quantity, category_id]
@@ -65,10 +72,56 @@ export async function postUpdateItem(item: TItem) {
   const price = item.price;
   const durability = item.durability;
   const quantity = item.quantity;
-  const category_id = getCategory(item.category_id);
+  const category_id = getCategory(item.category);
   await pool.query(
     "UPDATE items SET item_name = ($2), price = ($3), durability = ($4), quantity = ($5), category_id = ($6) WHERE id = ($1)",
     [id, item_name, price, durability, quantity, category_id]
   );
   return;
+}
+
+export async function getFilteredItems(filter: TFilter) {
+  const itemName =
+    typeof filter.item_name === "string" ? filter.item_name : "none";
+  const category =
+    typeof filter.category === "string" ? filter.category : "all";
+  const sortBy = typeof filter.sortBy === "string" ? filter.sortBy : "none";
+  const order = typeof filter.order === "string" ? filter.order : "none";
+
+  let SQL = `SELECT * FROM items WHERE 1 = 1`;
+  const params = [];
+  let count = 1;
+
+  if (itemName !== "none" && itemName !== "") {
+    SQL += ` AND item_name = ($${count})`;
+    params.push(itemName);
+    count += 1;
+  }
+
+  if (category !== "all") {
+    const categoryId = getCategory(category);
+    SQL += ` AND category_id = ($${count})`;
+    params.push(categoryId);
+    count += 1;
+  }
+
+  if (sortBy !== "none") {
+    SQL += ` ORDER BY ($${count})`;
+    params.push(sortBy);
+    count += 1;
+    if (order === "ascending") {
+      SQL += ` ASC`;
+    } else if (order === "descending") {
+      SQL += " DESC";
+    }
+  } else if (order !== "none") {
+    if (order === "ascending") {
+      SQL += ` ORDER BY id ASC`;
+    } else if (order === "descending") {
+      SQL += " ORDER BY id DESC";
+    }
+  }
+
+  const { rows } = await pool.query(SQL, params);
+  return rows;
 }
