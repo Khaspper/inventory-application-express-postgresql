@@ -14,9 +14,11 @@ const category_id = 1;
 
 async function main() {
   console.log("Seeding...");
-  const connectionString = process.env.LOCAL_DATABASE_URL;
+  const connectionString =
+    process.env.DATABASE_PUBLIC_URL || process.env.LOCAL_DATABASE_URL;
   const client = new Client({
     connectionString,
+    ssl: { rejectUnauthorized: false },
   });
   await client.connect();
   await client.query(
@@ -43,7 +45,7 @@ async function main() {
   );
   await client.query(
     `INSERT INTO items (item_name, price, durability, quantity, category_id)
-    VALUES ($1, $2, $3, $4, $5, $6);`,
+    VALUES ($1, $2, $3, $4, $5);`,
     [item_name, price, durability, quantity, category_id]
   );
   await client.end();
