@@ -74,15 +74,6 @@ const validateFilter: ValidationChain[] = [
 ];
 
 const validateSecretPath: ValidationChain[] = [
-  body("name")
-    .trim()
-    .notEmpty()
-    .withMessage(`You're not one of my friends... :P NO SECRET`)
-    .isAlpha()
-    .withMessage(`WHY ARE YOU EVEN TRYING THIS`)
-    .isIn(["patrick", "tyler", "joesph"])
-    .withMessage("WHAT ARE YOU DOING DUDE"),
-
   body("password")
     .trim()
     .notEmpty()
@@ -120,7 +111,6 @@ export const welcomeToTheSecret = [
   (req: Request, res: Response) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      // re-render with errors (don’t echo password)
       return res.status(400).render("entrance", { errors: errors.array() });
     }
 
@@ -131,6 +121,7 @@ export const welcomeToTheSecret = [
         errors: [{ msg: "Wrong password." }],
       });
     }
-    res.render("secret");
+    const surprise = process.env.SECRET_SURPRISE;
+    res.render(`secret`, { surprise });
   },
 ];
