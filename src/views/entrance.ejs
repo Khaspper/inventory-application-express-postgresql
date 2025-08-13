@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>New Item Form</title>
+    <link rel="stylesheet" href="/styles/build.css" />
+  </head>
+  <body class="flex justify-center">
+    <div class="rounded-2xl shadow-xl/30 mt-5 p-5 max-w-[500px]">
+      <section class="p-2 text-center">
+        <h1 class="text-4xl font-medium">Hello :P</h1>
+        <h2 class="text-2xl">Who is you tho fr?</h2>
+        <%- include("partials/errors.ejs") %>
+      </section>
+      <form
+        class="flex flex-col flex-wrap gap-4"
+        action="/secret"
+        method="POST"
+      >
+        <div class="flex flex-col grow min-w-[250px] basis-0">
+          <label for="name"> Name *</label>
+          <select
+            required
+            name="name"
+            id="name"
+            class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+          >
+            <option value="patrick">Patrick</option>
+            <option value="tyler">Tyler</option>
+            <option value="joesph">Joesph</option>
+            <option value="" disabled selected hidden>-- Select Name --</option>
+          </select>
+        </div>
+        <div class="flex flex-col basis-0 grow">
+          <label for="password">Password *</label>
+          <input
+            required
+            type="password"
+            name="password"
+            id="password"
+            class="border-1 rounded-lg p-1 border-zinc-400 bg-white"
+          />
+        </div>
+        <div class="flex w-full justify-between gap-4 text-white">
+          <a
+            href="/"
+            class="flex justify-center items-center border-2 p-3 rounded-xl bg-yellow-400 hover:cursor-pointer"
+            >Go back</a
+          >
+          <button
+            type="submit"
+            class="border-2 p-3 rounded-xl bg-green-600 hover:cursor-pointer"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
+    </div>
+  </body>
+</html>
+
+<!--! DO NOT FORGET TO VALIDATE THE FORM!!!! !-->
