@@ -9,6 +9,6 @@ const itemActionRouter = Router();
 
 itemActionRouter.get("/:id", editItem);
 itemActionRouter.post("/:id", deleteItem);
-itemActionRouter.post("/update/:id", updateItem);
+itemActionRouter.post("/update/:id", ...updateItem);
 
 export default itemActionRouter;

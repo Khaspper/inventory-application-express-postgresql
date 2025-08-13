@@ -1,11 +1,6 @@
 import { Request, Response } from "express";
 import { postNewItem } from "../db/queries";
-import {
-  body,
-  validationResult,
-  ValidationChain,
-  // query,
-} from "express-validator";
+import { body, validationResult, ValidationChain } from "express-validator";
 
 const EmptyError = "must not be empty.";
 
@@ -17,7 +12,7 @@ const priceRangeError = "must be between 1 and 999999.";
 
 const durabilityRangeError = "must be between 1 and 999999.";
 
-const quantityRangeError = "must be between 1 and 9999.";
+const quantityRangeError = "must be between 1 and 5.";
 
 export const validateItem: ValidationChain[] = [
   body("item_name")
