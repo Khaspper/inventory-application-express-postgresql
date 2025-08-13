@@ -14,8 +14,7 @@ const category_id = 1;
 
 async function main() {
   console.log("Seeding...");
-  const connectionString =
-    process.env.DATABASE_PUBLIC_URL || process.env.LOCAL_DATABASE_URL;
+  const connectionString = process.env.DATABASE_PUBLIC_URL;
   const client = new Client({
     connectionString,
     ssl: { rejectUnauthorized: false },
